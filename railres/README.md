@@ -6,5 +6,5 @@
 #Open phpmyadmin
 #Create Database named railres.
 #Import database railres.sql from downloaded folder(inside database)
-#4. Open Your browser put inside "http://localhost/railway reservation system in php/"
+#4. Open Your browser put inside "http://localhost/railres"
 
