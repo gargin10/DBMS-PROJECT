@@ -43,14 +43,14 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 <html>
 <head>
 	<title> Reservation </title>
-	<link rel="shortcut icon" href="images/favicon.png"></link>
+	<!-- <link rel="shortcut icon" href="images/favicon.png"></link> -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
 	<link href="css/bootstrap.min.css" rel="stylesheet"></link>
 	<link href="css/Default.css" rel="stylesheet"></link>
-	<script type="text/javascript" src="js/jquery.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.js"></script> -->
 	<script>
 		$(document).ready(function()
 		{
@@ -58,8 +58,8 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 			$('.wrap').css("left",x+"px");
 		});
 	</script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+	<!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
 	<script type="text/javascript" src="js/man.js"></script>
 	
 </head>
@@ -68,7 +68,7 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 		<!-- Header -->
 		<div class="header">
 			<div style="float:left;width:150px;">
-				<img src="images/logo.jpg"/>
+				<img src="images/rlogo.png"/>
 			</div>		
 			<div>
 			<div style="float:right; font-size:20px;margin-top:20px;">
@@ -89,7 +89,7 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 			
 			</div>
 			<div id="heading">
-				<a href="index.php" >Indian Railways</a>
+				<a href="index.php" >Railway Booking</a>
 			</div>
 			</div>
 		</div>
@@ -154,7 +154,7 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 					<th style="width:70px;border-top:0px;"> Arrive at. </th>
 					<th style="width:80px;border-top:0px;"> Reach by </th>
 					<th style="width:80px;border-top:0px;">duration</th>
-					<th style="width:150px;border-top:0px;"></th>
+                    <th style="width:150px;border-top:0px;"></th>
 				</tr>
 				</table>
 				</div>
@@ -225,6 +225,12 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
     $h = floor($t / 60);
  $m =$t % 60;
 
+						// $p1=substr($q,0,2);
+						// $p2=substr($q,3,2);
+						// $p2=$p2+5;
+						// if($p2<10)
+						// {$p2="0".$p2;}
+						// $d=$p1.":".$p2;
 					if($n%2==0)
 					{
 				
@@ -257,7 +263,7 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 					<td style="width:55px;"> <?php  echo $row['Dest']; ?> </td>
 					<td style="width:60px;"> <?php  echo $q; ?> </td>
 					<td style="width:65px;"> <?php  echo $d; ?> </td>
-				<td style="width:65px;"> <?php   echo $h; ?>hrs<?php echo $m;?>min </td>
+					<td style="width:65px;"> <?php   echo $h; ?>hrs<?php echo $m;?>min </td>
 					<td style="width:200px;">
 						<a class="text-info" href="reser.php?tno=<?php echo$row['Number']?>&fromstn=<?php echo $fromstn ?>&tostn=<?php echo $tostn ?>&doj=<?php echo $doj ?>&quota=<?php echo $quota;?>&class=<?php echo "1A";?>"><b>1A</b> </a> 
 						<a class="text-info" href="reser.php?tno=<?php echo$row['Number']?>&fromstn=<?php echo $fromstn ?>&tostn=<?php echo $tostn ?>&doj=<?php echo $doj ?>&quota=<?php echo $quota;?>&class=<?php echo "2A";?>"><b>2A</b></a>
@@ -284,11 +290,11 @@ else if((!isset($_POST['from'])) && (!isset($_POST['to'])))
 
 		<footer >
 		<div style="width:100%;">
-			<div style="float:left;">
+			<!-- <div style="float:left;">
 			<p class="text-right text-info">  &copy; 2018 Copyright PVT Ltd.</p>	
-			</div>
+			</div> -->
 			<div style="float:right;">
-			<p class="text-right text-info">	Desinged By : projectworlds</p>
+			<p class="text-right text-info">DBMS PROJECT</p>
 			</div>
 		</div>
 		</footer>	</div>
