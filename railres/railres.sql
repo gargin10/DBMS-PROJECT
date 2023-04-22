@@ -52,14 +52,47 @@ INSERT INTO `booking` (`uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `to
 ('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'nilu', 35, 'female', 'Confirmed'),
 ('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'sheela', 48, 'female', 'Confirmed'),
 ('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'pyari', 79, 'female', 'Confirmed'),
-('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'hola', 25, 'male', 'Waiting'),
-('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'bahr', 89, 'male', 'Waiting'),
-('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'ebola', 45, 'male', 'Waiting'),
+
 ('ayush', 12009, '1A', '2023-04-26', '2023-04-26', 'SURAT', 'SURAT', 'ayush', 4, 'male', 'Confirmed'),
 ('Ankit', 12009, 'SL', '2023-04-27', '2023-04-27', 'SURAT', 'BARODA', 'ayush', 15, 'male', 'Confirmed'),
 ('ayush', 12931, '3A', '2023-04-28', '2023-04-28', 'SURAT', 'ANAND', 'akhil', 15, 'male', 'Confirmed'),
 ('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'smatrt', 56, 'male', 'Confirmed'),
 ('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'ahjs', 56, 'male', 'Confirmed');
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tatkallist`
+--
+CREATE TABLE `waitlist` (
+  `uname` varchar(15) NOT NULL,
+  `Tnumber` int(11) NOT NULL,
+  `class` varchar(2) NOT NULL,
+  `doj` date NOT NULL,
+  `DOB` date NOT NULL,
+  `fromstn` varchar(15) NOT NULL,
+  `tostn` varchar(15) NOT NULL,
+  `Name` varchar(15) NOT NULL,
+  `Age` int(11) NOT NULL,
+  `sex` varchar(10) NOT NULL,
+  `Status` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+INSERT INTO `waitlist` (`uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`) VALUES
+('rishabh', 12009, '2A', '2023-04-28', '2023-04-26', 'SURAT', 'BARODA', 'rishabh', 20, 'male'),
+('ayush', 19011, '1A', '2023-04-30', '2023-04-26', 'SURAT', 'BARODA', 'ayush', 21, 'male'),
+('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'alu', 45, 'male'),
+('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'kachalu', 55, 'male'),
+('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'nilu', 35, 'female'),
+('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'sheela', 48, 'female'),
+('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'pyari', 79, 'female'),
+('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'hola', 25, 'male'),
+('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'bahr', 89, 'male'),
+('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'ebola', 45, 'male'),
+('ayush', 12009, '1A', '2023-04-26', '2023-04-26', 'SURAT', 'SURAT', 'ayush', 4, 'male'),
+('Ankit', 12009, 'SL', '2023-04-27', '2023-04-27', 'SURAT', 'BARODA', 'ayush', 15, 'male'),
+('ayush', 12931, '3A', '2023-04-28', '2023-04-28', 'SURAT', 'ANAND', 'akhil', 15, 'male'),
+('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'smatrt', 56, 'male'),
+('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'ahjs', 56, 'male');
+
 
 -- --------------------------------------------------------
 
@@ -1132,13 +1165,6 @@ CREATE TABLE `train_list` (
   `Destination` varchar(20) NOT NULL,
   `Arrival` varchar(10) NOT NULL,
   `Departure` varchar(10) NOT NULL,
-  `Mon` varchar(2) NOT NULL,
-  `Tue` varchar(2) NOT NULL,
-  `Wed` varchar(2) NOT NULL,
-  `Thu` varchar(2) NOT NULL,
-  `Fri` varchar(2) NOT NULL,
-  `Sat` varchar(2) NOT NULL,
-  `Sun` varchar(2) NOT NULL,
   `1A` int(11) NOT NULL,
   `2A` int(11) NOT NULL,
   `3A` int(11) NOT NULL,
@@ -1152,24 +1178,31 @@ CREATE TABLE `train_list` (
 -- Dumping data for table `train_list`
 --
 
-INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, `Departure`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`, `1A`, `2A`, `3A`, `SL`, `General`, `Ladies`, `Tatkal`) VALUES
-(12009, 'SHATABDI EXP', 'BCT', 'ADI', '22:15', '06:25', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
-(12931, 'ADI DOUBLE DECK', 'BCT', 'ADI', 'First st', '14:20', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
-(12932, 'BCT DOUBLEDECKE', 'ADI', 'BCT', '13:00', 'Last st', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'N', 2500, 1000, 500, 250, 2, 1, 3),
-(12952, 'MUMBAI RAJDHANI', 'NDLS', 'BCT', '08:25', 'last st', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(19011, 'GUJARAT EXPRESS', 'ADI', 'BCT', '16:25', '10:35', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(22210, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(22220, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(22222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(25222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(29333, 'KARNAVATI EXP', 'AHMD', 'BCT', '08:05', '21:10', 'Y', 'Y', 'Y', 'N', 'Y', 'N', 'Y', 2500, 1000, 500, 250, 2, 1, 3),
-(59442, 'AHMEDABAD PASS', 'ADI', 'BCT', '04:35', '1:35', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 2500, 1000, 500, 250, 2, 1, 3);
+INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, `Departure`,  `1A`, `2A`, `3A`, `SL`, `General`, `Ladies`, `Tatkal`) VALUES
+(12009, 'SHATABDI EXP', 'BCT', 'ADI', '22:15', '06:25', 2500, 1000, 500, 250, 2, 1, 3),
+(12931, 'ADI DOUBLE DECK', 'BCT', 'ADI', 'First st', '14:20', 2500, 1000, 500, 250, 2, 1, 3),
+(12932, 'BCT DOUBLEDECKE', 'ADI', 'BCT', '13:00', 'Last st', 2500, 1000, 500, 250, 2, 1, 3),
+(12952, 'MUMBAI RAJDHANI', 'NDLS', 'BCT', '08:25', 'last st',  2500, 1000, 500, 250, 2, 1, 3),
+(19011, 'GUJARAT EXPRESS', 'ADI', 'BCT', '16:25', '10:35',2500, 1000, 500, 250, 2, 1, 3),
+(22210, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st',  2500, 1000, 500, 250, 2, 1, 3),
+(22220, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st',  2500, 1000, 500, 250, 2, 1, 3),
+(22222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 2500, 1000, 500, 250, 2, 1, 3),
+(25222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 2500, 1000, 500, 250, 2, 1, 3),
+(29333, 'KARNAVATI EXP', 'AHMD', 'BCT', '08:05', '21:10',  2500, 1000, 500, 250, 2, 1, 3),
+(59442, 'AHMEDABAD PASS', 'ADI', 'BCT', '04:35', '1:35', 2500, 1000, 500, 250, 2, 1, 3);
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `users`
+--
 
 --
 -- Table structure for table `users`
 --
+CREATE TABLE `admins` (
+  `f_name` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (
   `f_name` varchar(50) NOT NULL,
@@ -1179,15 +1212,17 @@ CREATE TABLE `users` (
   `gender` varchar(10) NOT NULL,
   `marital` varchar(10) NOT NULL,
   `dob` varchar(20) NOT NULL,
-  `mobile` bigint(10) NOT NULL
+  `mobile` bigint(10) NOT NULL,
+  `ques` varchar(100) NOT NULL,
+  `ans` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`f_name`, `l_name`, `email`, `password`, `gender`, `marital`, `dob`, `mobile`) VALUES
-('ayush', 'tripathi', 'ayushtripathi51@gmail.com', '123456789', 'male', 'unmarried', '1999-04-02', 9453890182);
+INSERT INTO `admins` (`f_name`,`password`) VALUES
+('sana', '123456789');
 
 --
 -- Indexes for dumped tables
