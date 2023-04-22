@@ -1,1239 +1,173 @@
--- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
---
--- Host: 127.0.0.1
--- Generation Time: Apr 28, 2023 at 11:08 AM
--- Server version: 5.7.11
--- PHP Version: 5.6.19
+<?php
+session_start();
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Login </title>
+	<link rel="shortcut icon" href="images/favicon.png"></link>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<link href="css/bootstrap.min.css" rel="stylesheet" ></link>
+	<link href="css/bootstrap.css" rel="stylesheet" ></link>
+	<link href="css/Default.css" rel="stylesheet" >	</link>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script>
+		$(document).ready(function()
+		{
+			//alert($(window).width());
+			var x=(($(window).width())-1024)/2;
+			//alert(x);
+			$('.wrap').css("left",x+"px");
+		});
 
+	</script>
+	
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/man.js"></script>
+	
+	
+</head>
+<body>
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+	<div class="wrap">
+		<!-- Header -->
+		<div class="header">
+			<div style="float:left;width:150px;">
+				<img src="images/logo.jpg"/>
+			</div>		
+			<div>
+			<div id="heading">
+				<a href="index.html">Indian Railways</a>
+			</div>
+			</div>
+		</div>
+		
+		<!-- Navigation bar -->
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<div class="container" >
+				<a class="brand" href="index.php" >HOME</a>
+				<a class="brand" href="train.php" >FIND TRAIN</a>
+				<a class="brand" href="reservation.php">RESERVATION</a>
+				<a class="brand" href="profile.php">PROFILE</a>
+				<a class="brand" href="booking.php">BOOKING HISTORY</a>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Login and signup -->
+		<div align="left">
+		
+		<?php
+			if(isset($_SESSION['error']))
+			{
+			 if(isset($_SESSION['name']))
+			 {
+				//echo "nikul";
+			 }
+			 else if($_SESSION['error']==15)
+			 {
+				//echo "hilgr";
+		?>
+				<div class="alert alert-error"><font size="5"> Please Login First..</font> 
+				</div>
+		<?php	 }
+			}
+			//else{ echo "hi";}
+		?>
+			<br />
+			<br />
+	<div class="container">
+		<div  class="box box-left">
+			<div  class=" well login">
+			<form class="form-signin " method="post" action="login.php">
+		
+			<table class="table" style="margin-bottom:4px;">
+			
+			<tr>
+			<td style="border-top:0px;"><label> Username</label></td>
+			<td style="border-top:0px;"> <input type="text" name="user" class="input-block-level" placeholder="Username"></td>
+			</tr>
+			<tr >
+			<td style="border-top:0px;"> <label>Password</label></td>
+			<td style="border-top:0px;"><input type="password" name="psd" class="input-block-level" placeholder="password"></td>
+			</tr>
+			<tr>
+			<td colspan=2 style="border-top:0px; visibility:hidden;" id="wrong"  class="label label-important">Username and Password Wrong !!!</td>
+			</tr>
+			<tr>
+			<td style="border-top:0px;"></td>
+			<td style="border-top:0px;"> <input class="btn btn-info" type="submit" value="Login"></td>
+			</tr>
+			<tr>
+			<td colspan="2" style="border-top:0px;"> <p>  You don't have register?</p></td>
+			</tr>
+			<tr>
+			<td style="border-top:0px;"></td>
+			<td style="border-top:0px;"> <a class="btn btn-info" href="signup.php?value=0">Signup</a></td>
+			</tr>
+			
+			</table>
+			</form>
+		</div>
+		</div>
+		<br/>
+		<!-- Footer -->
+		
+		<div  class="box box-right">
+			<div  class=" well login">
+			<form class="form-signin " method="post" action="loginadmin.php">
+		
+			<table class="table" style="margin-bottom:4px;">
+			
+			<tr>
+			<td style="border-top:0px;"><label> Admin</label></td>
+			<td style="border-top:0px;"> <input type="text" name="admin" class="input-block-level" placeholder="Admin Username"></td>
+			</tr>
+			<tr >
+			<td style="border-top:0px;"> <label>Password</label></td>
+			<td style="border-top:0px;"><input type="password" name="psdadmin" class="input-block-level" placeholder="password"></td>
+			</tr>
+			<tr>
+			<td colspan=2 style="border-top:0px; visibility:hidden;" id="wrong"  class="label label-important">Admin and Password Wrong !!!</td>
+			</tr>
+			<tr>
+			<td style="border-top:0px;"></td>
+			<td style="border-top:0px;"> <input class="btn btn-info" type="submit" value="LoginAsAdmin"></td>
+			</tr>
+			
+			</table>
+			</form>
+		</div>
+		</div>
+	</div>
+		<br/>
+		<!-- Footer -->
+<footer >
+		<div style="width:100%;">
+			<div style="float:left;">
+			<p class="text-right text-info">  &copy; 2018 Copyright PVT Ltd.</p>	
+			</div>
+			<div style="float:right;">
+			<p class="text-right text-info">	Desinged By : projectworlds</p>
+			</div>
+		</div>
+		</footer>		
+	</div>
+</body>
+</html>
+<?php
+if(isset($_SESSION['error']))
+{
+if($_SESSION['error']==1)
+echo "<script>document.getElementById(\"wrong\").style.visibility=\"\";</script>";
+session_destroy();
+}
 
---
--- Database: `railres`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `booking`
---
-
-CREATE TABLE `booking` (
-  `uname` varchar(15) NOT NULL,
-  `Tnumber` int(11) NOT NULL,
-  `class` varchar(2) NOT NULL,
-  `doj` date NOT NULL,
-  `DOB` date NOT NULL,
-  `fromstn` varchar(15) NOT NULL,
-  `tostn` varchar(15) NOT NULL,
-  `Name` varchar(15) NOT NULL,
-  `Age` int(11) NOT NULL,
-  `sex` varchar(10) NOT NULL,
-  `Status` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `booking`
---
-
-INSERT INTO `booking` (`uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`, `Status`) VALUES
-('rishabh', 12009, '2A', '2023-04-28', '2023-04-26', 'SURAT', 'BARODA', 'rishabh', 20, 'male', 'Confirmed'),
-('ayush', 19011, '1A', '2023-04-30', '2023-04-26', 'SURAT', 'BARODA', 'ayush', 21, 'male', 'Confirmed'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'alu', 45, 'male', 'Confirmed'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'kachalu', 55, 'male', 'Confirmed'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'nilu', 35, 'female', 'Confirmed'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'sheela', 48, 'female', 'Confirmed'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'pyari', 79, 'female', 'Confirmed'),
-
-('ayush', 12009, '1A', '2023-04-26', '2023-04-26', 'SURAT', 'SURAT', 'ayush', 4, 'male', 'Confirmed'),
-('Ankit', 12009, 'SL', '2023-04-27', '2023-04-27', 'SURAT', 'BARODA', 'ayush', 15, 'male', 'Confirmed'),
-('ayush', 12931, '3A', '2023-04-28', '2023-04-28', 'SURAT', 'ANAND', 'akhil', 15, 'male', 'Confirmed'),
-('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'smatrt', 56, 'male', 'Confirmed'),
-('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'ahjs', 56, 'male', 'Confirmed');
--- --------------------------------------------------------
-
---
--- Table structure for table `tatkallist`
---
-CREATE TABLE `waitlist` (
-  `uname` varchar(15) NOT NULL,
-  `Tnumber` int(11) NOT NULL,
-  `class` varchar(2) NOT NULL,
-  `doj` date NOT NULL,
-  `DOB` date NOT NULL,
-  `fromstn` varchar(15) NOT NULL,
-  `tostn` varchar(15) NOT NULL,
-  `Name` varchar(15) NOT NULL,
-  `Age` int(11) NOT NULL,
-  `sex` varchar(10) NOT NULL,
-  `Status` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-INSERT INTO `waitlist` (`uname`, `Tnumber`, `class`, `doj`, `DOB`, `fromstn`, `tostn`, `Name`, `Age`, `sex`) VALUES
-('rishabh', 12009, '2A', '2023-04-28', '2023-04-26', 'SURAT', 'BARODA', 'rishabh', 20, 'male'),
-('ayush', 19011, '1A', '2023-04-30', '2023-04-26', 'SURAT', 'BARODA', 'ayush', 21, 'male'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'alu', 45, 'male'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'kachalu', 55, 'male'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'nilu', 35, 'female'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'sheela', 48, 'female'),
-('ayush', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'BARODA', 'pyari', 79, 'female'),
-('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'hola', 25, 'male'),
-('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'bahr', 89, 'male'),
-('rishabh', 12932, '1A', '2023-05-31', '2023-04-26', 'SURAT', 'ANAND', 'ebola', 45, 'male'),
-('ayush', 12009, '1A', '2023-04-26', '2023-04-26', 'SURAT', 'SURAT', 'ayush', 4, 'male'),
-('Ankit', 12009, 'SL', '2023-04-27', '2023-04-27', 'SURAT', 'BARODA', 'ayush', 15, 'male'),
-('ayush', 12931, '3A', '2023-04-28', '2023-04-28', 'SURAT', 'ANAND', 'akhil', 15, 'male'),
-('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'smatrt', 56, 'male'),
-('ayush', 12932, '2A', '2023-05-31', '2023-04-28', 'SURAT', 'ANAND', 'ahjs', 56, 'male');
-
-
--- --------------------------------------------------------
-
---
--- Table structure for table `interlist`
---
-
-CREATE TABLE `interlist` (
-  `Number` int(6) DEFAULT NULL,
-  `st1` varchar(10) DEFAULT NULL,
-  `st1arri` varchar(10) DEFAULT NULL,
-  `st2` varchar(10) DEFAULT NULL,
-  `st2arri` varchar(10) DEFAULT NULL,
-  `st3` varchar(10) DEFAULT NULL,
-  `st3arri` varchar(10) DEFAULT NULL,
-  `st4` varchar(10) DEFAULT NULL,
-  `st4arri` varchar(10) DEFAULT NULL,
-  `st5` varchar(10) DEFAULT NULL,
-  `st5arri` varchar(10) DEFAULT NULL,
-  `Ori` varchar(20) NOT NULL,
-  `Oriarri` varchar(10) NOT NULL,
-  `Dest` varchar(20) NOT NULL,
-  `Desarri` varchar(10) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `Mon` varchar(2) NOT NULL,
-  `Tue` varchar(2) NOT NULL,
-  `Wed` varchar(2) NOT NULL,
-  `Thu` varchar(2) NOT NULL,
-  `Fri` varchar(2) NOT NULL,
-  `Sat` varchar(2) NOT NULL,
-  `Sun` varchar(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `interlist`
---
-
-INSERT INTO `interlist` (`Number`, `st1`, `st1arri`, `st2`, `st2arri`, `st3`, `st3arri`, `st4`, `st4arri`, `st5`, `st5arri`, `Ori`, `Oriarri`, `Dest`, `Desarri`, `Name`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`) VALUES
-(12009, 'VAPI', '00:15', 'VALSAD', '01:45', 'SURAT', '02:30', 'BARODA', '04:00', 'ANAND', '05:05', 'BCT', '22:15', 'ADI', '06:25', 'SHATABDI EXP', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'X'),
-(12931, 'VAPI', '07:15', 'VALSAD', '08:45', 'SURAT', '09:30', 'BARODA', '11:30', 'ANAND', '12:45', 'BCT', '06:00', 'ADI', '14:20', 'ADI DOUBLE DECK', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
-(12932, 'VAPI', '19:15', 'VALSAD', '18:45', 'SURAT', '07:30', 'BARODA', '15:30', 'ANAND', '14:05', 'ADI', '13:00', 'BCT', '22:10', 'BCT DOUBLEDECKE', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
-(19011, 'VAPI', '06:26', 'VALSAD', '01:50', 'SURAT', '23:45', 'BARODA', '20:20', 'ANAND', '18:10', 'ADI', '16:25', 'BCT', '10:25', 'GUJARAT EXPRESS', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y'),
-(22210, 'VAPI', '00:10', 'VALSAD', '23:50', 'SURAT', '22:25', 'BARODA', '20:05', 'ANAND', '18:20', 'NDLS', '16:15', 'BCT', '01:35', 'BCT DURONTO', 'N', 'N', 'Y', 'N', 'N', 'N', 'Y');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `seats_availability`
---
-
-CREATE TABLE `seats_availability` (
-  `Train_No` int(11) NOT NULL,
-  `Train_Name` varchar(20) NOT NULL,
-  `doj` date NOT NULL,
-  `1A` int(11) NOT NULL,
-  `2A` int(11) NOT NULL,
-  `3A` int(11) NOT NULL,
-  `AC` int(11) NOT NULL,
-  `CC` int(11) NOT NULL,
-  `SL` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `seats_availability`
---
-
-INSERT INTO `seats_availability` (`Train_No`, `Train_Name`, `doj`, `1A`, `2A`, `3A`, `AC`, `CC`, `SL`) VALUES
-(12009, 'SHATABDI EXP', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-26', 4, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-27', 5, 5, 5, 5, 5, 4),
-(12009, 'SHATABDI EXP', '2023-04-28', 5, 4, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(12009, 'SHATABDI EXP', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-28', 5, 5, 4, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(12931, 'ADI DOUBLE DECK', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-05-31', -3, 3, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(12932, 'BCT DOUBLEDECKE', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(12952, 'MUMBAI RAJDHANI', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-04-30', 4, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(19011, 'GUJARAT EXPRESS', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(22210, 'BCT DURONTO', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(22220, 'BCT DURONTO', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(22222, 'BCT DURONTO', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(25222, 'BCT DURONTO', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-06-30', 5, 5, 5, 5, 5, 5);
-INSERT INTO `seats_availability` (`Train_No`, `Train_Name`, `doj`, `1A`, `2A`, `3A`, `AC`, `CC`, `SL`) VALUES
-(29333, 'KARNAVATI EXP', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(29333, 'KARNAVATI EXP', '2023-07-08', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-10', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-11', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-12', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-13', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-14', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-15', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-16', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-17', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-18', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-19', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-20', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-21', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-22', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-23', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-24', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-25', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-26', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-27', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-28', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-29', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-04-30', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-01', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-02', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-03', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-04', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-05', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-06', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-07', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-08', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-09', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-10', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-11', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-12', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-13', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-14', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-15', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-16', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-17', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-18', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-19', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-20', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-21', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-22', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-23', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-24', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-25', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-26', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-27', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-28', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-29', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-30', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-05-31', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-01', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-02', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-03', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-04', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-05', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-06', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-07', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-08', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-09', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-10', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-11', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-12', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-13', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-14', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-15', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-16', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-17', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-18', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-19', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-20', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-21', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-22', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-23', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-24', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-25', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-26', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-27', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-28', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-29', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-06-30', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-01', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-02', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-03', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-04', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-05', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-06', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-07', 5, 5, 5, 5, 5, 5),
-(59442, 'AHMEDABAD PASS', '2023-07-08', 5, 5, 5, 5, 5, 5);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `train_list`
---
-
-CREATE TABLE `train_list` (
-  `Number` int(6) NOT NULL,
-  `Name` varchar(20) NOT NULL,
-  `Origin` varchar(20) NOT NULL,
-  `Destination` varchar(20) NOT NULL,
-  `Arrival` varchar(10) NOT NULL,
-  `Departure` varchar(10) NOT NULL,
-  `1A` int(11) NOT NULL,
-  `2A` int(11) NOT NULL,
-  `3A` int(11) NOT NULL,
-  `SL` int(11) NOT NULL,
-  `General` int(11) NOT NULL,
-  `Ladies` int(11) NOT NULL,
-  `Tatkal` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `train_list`
---
-
-INSERT INTO `train_list` (`Number`, `Name`, `Origin`, `Destination`, `Arrival`, `Departure`,  `1A`, `2A`, `3A`, `SL`, `General`, `Ladies`, `Tatkal`) VALUES
-(12009, 'SHATABDI EXP', 'BCT', 'ADI', '22:15', '06:25', 2500, 1000, 500, 250, 2, 1, 3),
-(12931, 'ADI DOUBLE DECK', 'BCT', 'ADI', 'First st', '14:20', 2500, 1000, 500, 250, 2, 1, 3),
-(12932, 'BCT DOUBLEDECKE', 'ADI', 'BCT', '13:00', 'Last st', 2500, 1000, 500, 250, 2, 1, 3),
-(12952, 'MUMBAI RAJDHANI', 'NDLS', 'BCT', '08:25', 'last st',  2500, 1000, 500, 250, 2, 1, 3),
-(19011, 'GUJARAT EXPRESS', 'ADI', 'BCT', '16:25', '10:35',2500, 1000, 500, 250, 2, 1, 3),
-(22210, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st',  2500, 1000, 500, 250, 2, 1, 3),
-(22220, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st',  2500, 1000, 500, 250, 2, 1, 3),
-(22222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 2500, 1000, 500, 250, 2, 1, 3),
-(25222, 'BCT DURONTO', 'NDLS', 'BCT', '16:15', 'Last st', 2500, 1000, 500, 250, 2, 1, 3),
-(29333, 'KARNAVATI EXP', 'AHMD', 'BCT', '08:05', '21:10',  2500, 1000, 500, 250, 2, 1, 3),
-(59442, 'AHMEDABAD PASS', 'ADI', 'BCT', '04:35', '1:35', 2500, 1000, 500, 250, 2, 1, 3);
-
--- --------------------------------------------------------
---
--- Table structure for table `users`
---
-
---
--- Table structure for table `users`
---
-CREATE TABLE `admins` (
-  `f_name` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-CREATE TABLE `users` (
-  `f_name` varchar(50) NOT NULL,
-  `l_name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `marital` varchar(10) NOT NULL,
-  `dob` varchar(20) NOT NULL,
-  `mobile` bigint(10) NOT NULL,
-  `ques` varchar(100) NOT NULL,
-  `ans` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `admins` (`f_name`,`password`) VALUES
-('sana', '123456789');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `train_list`
---
-ALTER TABLE `train_list`
-  ADD PRIMARY KEY (`Number`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+?>	
